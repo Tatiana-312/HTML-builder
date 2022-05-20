@@ -6,14 +6,13 @@ stdout.write(
   'Пожалуйста введите текст\nДля выхода введите exit или ctrl + c\n'
 );
 
-let data = '';
 stdin.on('data', chunk => {
   if (chunk.toString().trim() === 'exit') {
     process.exit();
   } else {
-    data += chunk;
-    const output = fs.createWriteStream(path.join(__dirname, 'text.txt'));
-    output.write(data);
+    fs.appendFile(path.join(__dirname, 'text.txt'), chunk, err => {
+      if (err) throw err;
+    });
   }
 });
 process.on('SIGINT', () => process.exit());
