@@ -20,8 +20,9 @@ fs.mkdir(path.join(__dirname, 'project-dist'), () => {
   const replaceHeader = replaceMatch('{{header}}', path.join(__dirname, 'components','header.html'));
   const replaceArticles = replaceMatch('{{articles}}', path.join(__dirname, 'components','articles.html'));
   const replaceFooter = replaceMatch('{{footer}}', path.join(__dirname, 'components','footer.html'));
+  const replaceAbout = replaceMatch('{{about}}', path.join(__dirname, 'components','about.html'));
 
-  input.pipe(replaceHeader).pipe(replaceArticles).pipe(replaceFooter).pipe(output);
+  input.pipe(replaceHeader).pipe(replaceArticles).pipe(replaceFooter).pipe(replaceAbout).pipe(output);
 });
 
 fs.readdir(path.join(__dirname, 'styles'), (err, files) => {
