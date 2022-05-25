@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+fs.rm(path.join(__dirname, 'project-dist', 'bundle.css'), { recursive: true, force: true }, () => {});
 fs.readdir(path.join(__dirname, 'styles'), (err, files) => {
   if (err) {
     throw err;
